@@ -57,7 +57,17 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ---- PostgreSQL Connection ----
-engine = create_engine("postgresql+psycopg2://postgres:itsmaygal02@localhost:5432/youtube_dashboard")
+import os
+
+# Try to use Streamlit secrets first, fallback to local if running locally
+try:
+    DATABASE_URL = st.secrets["DATABASE_URL"]
+except:
+    # Local development fallback
+    DATABASE_URL = "postgresql+psycopg2://postgres:itsmaygal02@localhost:5432/youtube_dashboard"
+
+engine = create_engine(DATABASE_URL)
+
 
 # ---- Page Config & Banners ----
 st.set_page_config(page_title="YouTube Analytics • Modern Premium", layout="wide")
@@ -267,3 +277,4 @@ st.markdown(f"""
     <br>Auto-refreshes every 60s • <b>Premium UI • Modern Insights • Maximum Engagement</b>
     <br><a href='https://github.com/spacrece'>GitHub</a></center>
 """, unsafe_allow_html=True)
+
