@@ -2,8 +2,8 @@ from googleapiclient.discovery import build
 import pandas as pd
 
 # ----------------- CONFIG -----------------
-API_KEY = "API_KEY"         # Your API Key here
-CHANNEL_ID = "CHannel_ID"   # Your Channel ID here
+API_KEY = "AIzaSyDoTbivz3ZGF3-H3nV7mKfMmKNsIZTZq4g"         # Your API Key here
+CHANNEL_ID = "UCv-yOn6QFBonsVyotOYmQCw"   # Your Channel ID here
 MAX_VIDEOS = 10                  # Number of latest videos to fetch
 
 # Build YouTube API client
@@ -70,4 +70,3 @@ print(df_videos)
 # ----------------- STEP 4: Export to CSV -----------------
 df_videos.to_csv("youtube_channel_analytics.csv", index=False)
 print("\n✅ CSV file 'youtube_channel_analytics.csv' created successfully!")
-
