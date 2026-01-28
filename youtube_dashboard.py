@@ -159,6 +159,34 @@ def init_database():
 
 init_database()
 
+# ---- Auto-Fetch Data on Startup (For Streamlit Cloud) ----
+def check_and_fetch_data():
+    """Check if data exists, if not and API key exists, fetch it"""
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(text("SELECT COUNT(*) FROM channel_stats")).scalar()
+            
+        if result == 0:
+            # Database is empty, check for API key
+            api_key = os.getenv("YOUTUBE_API_KEY") or st.secrets.get("YOUTUBE_API_KEY")
+            
+            if api_key:
+                st.toast("🚀 Initializing dashboard... Fetching data from YouTube...", icon="⏳")
+                # Import here to avoid circular dependencies
+                from youtube_fetch import fetch_youtube_data
+                success = fetch_youtube_data()
+                if success:
+                    st.toast("✅ Data fetched successfully!", icon="🎉")
+                    st.rerun()
+                else:
+                    st.error("Failed to fetch data. Check API Key.")
+            else:
+                pass # Will be handled by the "No Data" screen later
+    except Exception as e:
+        print(f"Startup check failed: {e}")
+
+check_and_fetch_data()
+
 # ---- Page Title & Banners ----
 # YouTube Channel Button at Top
 st.markdown("""
