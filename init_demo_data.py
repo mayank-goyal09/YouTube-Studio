@@ -93,15 +93,3 @@ def generate_demo_data():
         "☁️ AWS for Beginners - Cloud Computing 101",
         "🎬 Video Editing with Python"
     ]
-    
-    videos = []
-    for i, title in enumerate(video_titles):
-        published = datetime.now() - timedelta(days=random.randint(1, 90))
-        views = random.randint(500, 50000)
-        videos.append({
-            "video_id": f"demo_vid_{i:03d}",
-            "title": title,
-            "published_at": published,
-            "views
-    init_database()
-    generate_demo_data()
