@@ -10,7 +10,7 @@ load_dotenv()
 
 # ----------------- CONFIG -----------------
 API_KEY = os.getenv("YOUTUBE_API_KEY", "")
-CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID", "UCv-yOn6QFBonsVyotOYmQCw")
+CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID", "")
 
 # SQLite connection (local file, no password needed!)
 DB_PATH = os.path.join(os.path.dirname(__file__), "youtube_data.db")
