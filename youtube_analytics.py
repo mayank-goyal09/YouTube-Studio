@@ -8,7 +8,7 @@ load_dotenv()
 
 # ----------------- CONFIG -----------------
 API_KEY = os.getenv("YOUTUBE_API_KEY", "")
-CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID", "")
+CHANNEL_ID = os.getenv("YOUTUBE_CHANNEL_ID", "UCv-yOn6QFBonsVyotOYmQCw")
 MAX_VIDEOS = 10                  # Number of latest videos to fetch
 
 if not API_KEY or not CHANNEL_ID:
