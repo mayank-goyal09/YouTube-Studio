@@ -24,7 +24,7 @@
 
 ---
 
-<div align="cen
+<div align="center">
   <h2>🔥🔥 TRENDING NOW: FEATURES 🔥🔥</h2>
 </div>
 
